@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, AxiosRequestConfig, RawAxiosRequestHeaders } from 'axios';
 import { Countries, Taxons } from '../lib/countries'
-import { observation } from '../models/Observation'
+import { result } from '../models/Observation'
 
 const client = axios.create({
   baseURL: 'https://api.inaturalist.org/v1',
@@ -21,15 +21,11 @@ const place_id = Countries.get("Serbia");
   try {
     //console.log(queryString)
     const searchResponse: AxiosResponse = await client.get(`/observations/?${queryString}`, config);
-    //console.log(searchResponse.data)
-    //const = searchResponse
-    console.log(searchResponse.status)
+
     console.log(searchResponse.data)
-    //return searchResponse.data
-    //const username: string = foundUsers[0].login;
-   // const userResponse: AxiosResponse = await client.get(`/users/${username}`, config);
-    //const user: githubUser = userResponse.data;
-    //const followersCount = user.followers;
+
+    const obs: result = searchResponse.data
+    console.log(obs.results)
 
     //console.log(`The most followed user on GitHub is "${username}" with ${followersCount} followers.`)
   } catch(err) {

@@ -20,18 +20,6 @@ const client = axios_1.default.create({
 //const url = "https://www.inaturalist.org/observations?place_id=7147&subview=map&taxon_id=630955"
 const taxon_id = countries_1.Taxons.get("Anthophila");
 const place_id = countries_1.Countries.get("Serbia");
-/*
-type githubFoundUser = {
- login: string;
- id: number;
-}
-
-type githubUser = {
-  login: string;
-  id: number;
-  followers: number;
-}
-*/
 (() => __awaiter(void 0, void 0, void 0, function* () {
     const config = {
         headers: {
@@ -46,11 +34,13 @@ type githubUser = {
         //const = searchResponse
         console.log(searchResponse.status);
         console.log(searchResponse.data);
-        return searchResponse.data;
+        //return searchResponse.data
         //const username: string = foundUsers[0].login;
         // const userResponse: AxiosResponse = await client.get(`/users/${username}`, config);
         //const user: githubUser = userResponse.data;
         //const followersCount = user.followers;
+        const obs = searchResponse.data;
+        console.log(obs.results[0].taxon);
         //console.log(`The most followed user on GitHub is "${username}" with ${followersCount} followers.`)
     }
     catch (err) {

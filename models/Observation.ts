@@ -66,3 +66,10 @@ export type observation = {
   faves: [],
   non_owner_ids: []
 }
+
+export type result = {
+  total_results: number,
+  page: number,
+  per_page: number
+  results: observation[]
+}
